@@ -1,0 +1,17 @@
+.loginPage{
+   
+    
+}
+
+.milkDiv{
+    -webkit-backdrop-filter: blur(10px); /* Safari 9+ */
+    backdrop-filter: blur(10px); /* Chrome and Opera */
+}
+
+.loginForm{
+    padding: 1.5rem 2rem 0 2rem
+}
+
+
+
+
