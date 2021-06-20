@@ -11,27 +11,16 @@ function RoomsComp(props) {
     const history = useHistory();
 
     const enterRoom = () =>{
-        //alert(chosenRoom);
-      //  let msg = socketUtil.joinGroup();
-      //  alert('msg'  +msg);
-     /*   history.push({
-            pathname: `rooms/${chosenRoom}`,
-            state: { msg: msg }
-        });
-       */
-        history.push(`rooms/${chosenRoom}`)
-            
+      history.push(`rooms/${chosenRoom}`);
     }
 
     //for now the rooms is hard coded
-   useEffect(() => {
+    useEffect(() => {
         let roomArr = [{id: 1, name: 'react'}, {id: 2, name: 'angular'}, {id: 3, name: 'vue'}];
         setRooms(roomArr);
     }, [])
-    
 
     return (
-        
       <div className='App'>
           <h3>Hello {sessionStorage.username}, Please choose Room for chat</h3>
 

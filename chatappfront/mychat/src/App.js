@@ -13,7 +13,6 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      {console.log('APP')}
       <Switch>
           <Route exact path="/" component={Login}/>
           <Route path="/createAccount" component={CreateAccount}/>

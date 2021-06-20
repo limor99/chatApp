@@ -7,11 +7,8 @@ const createAccount = async (createdUser) =>{
 }
 
 const login = async (userLogin) =>{
-    console.log(userLogin)    
     let resp = await axios.post(`${usersUrl}login`, userLogin);
-//console.log(resp)
     return resp.data;
-
 }
 
 export default {login, createAccount};
