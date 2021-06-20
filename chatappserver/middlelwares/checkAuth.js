@@ -17,18 +17,12 @@ const checkAuth =  () =>{
         if(authHeader){
             let token = authHeader.split(' ')[1];
 
-            jwt.verify(token, "chatKey", (err, userData) =>{
+            jwt.verify(token, "chatWsKey", (err) =>{
                 if(err){
                     resp.json(response);
                 }
                 else{
-                    const permissions = userData.permissions;
-                    if(permissions.includes(permission)){
-                        next();
-                    }
-                    else{
-                        resp.json(response);
-                    }
+                    next();
                 }
             })
         }

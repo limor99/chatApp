@@ -11,4 +11,14 @@ const login = async (userLogin) =>{
     return resp.data;
 }
 
-export default {login, createAccount};
+const isLogin = async (userLogin) =>{
+    const token = sessionStorage.getItem("id");
+    const header = {headers: 
+                        {"Authorization" : `Bearer ${token}`}
+                    }
+
+    let resp = await axios.post(`${usersUrl}isLogin`, userLogin, header);
+    return resp.data;
+}
+
+export default {login, createAccount, isLogin};

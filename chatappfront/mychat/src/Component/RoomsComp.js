@@ -1,14 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 
+import userUtil from '../Utils/usersUtil';
+
 function RoomsComp(props) {
     const [rooms, setRooms] = useState('');
     const [chosenRoom, setChosenRoom] = useState('');
 
     const history = useHistory();
 
-    const enterRoom = () =>{
-      history.push(`rooms/${chosenRoom}`);
+    const enterRoom = async () =>{
+      let resp = await userUtil.isLogin();
+      if(resp.success){
+        history.push(`rooms/${chosenRoom}`);
+      }
+      else{
+        history.push('/');
+      }
+      
     }
 
     //for now the rooms is hard coded

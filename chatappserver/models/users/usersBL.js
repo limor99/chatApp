@@ -31,7 +31,6 @@ exports.login = async function(user){
             }
 
             return response;
-
         }
 
         //Authorize user
@@ -41,7 +40,6 @@ exports.login = async function(user){
                 id: userId
             },
             "chatWsKey",
-           
         )
 
         response = {
@@ -49,11 +47,9 @@ exports.login = async function(user){
             message: "Authorization successful",
             token,
             username: username,
-            
         }
 
         return response;
-
     }
     catch(err){
         console.log(`An error occured while try to login: ${err}`);
@@ -63,28 +59,6 @@ exports.login = async function(user){
         }
 
         return response;
-        
-    }
-}
-
-
-exports.addNewUser = async function(user){
-    let isAdded = false;
-    let createdUser = null;
-    try{
-        // 1. add to DB
-        let NewUser = new User(user);
-        createdUser = await NewUser.save();
-    }
-    catch(err){
-        console.log(`An error occured while try to add new user: ${user.username} to DB and/or to json files: ${err}`);
-        
-    }
-    finally{
-        if(isAdded){
-            return createdUser.id;
-        }
-        return null;
     }
 }
 

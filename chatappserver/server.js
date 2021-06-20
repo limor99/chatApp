@@ -47,9 +47,6 @@ io.on('connection', socket =>{
 
     //Listen for readMsgs
     socket.on('readMsgs', msg =>{
-        //const currentUser = getCurrentUser(socket.id);
-        //socket.broadcast.to(currentUser.room).emit('checkedAsRead', msg);
-
         socket.broadcast.to(msg.socketId).emit('checkedAsRead', msg);
     })
 
@@ -75,12 +72,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-//const index = require("./routes/index");
-
 app.use('/api/users', require('./routes/usersRouter'));
-//app.use(index);
- 
-
 
 const PORT = 5000 || process.env.PORT;
 server.listen(PORT, function() {

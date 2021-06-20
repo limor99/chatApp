@@ -20,6 +20,19 @@ router.route('/login').post(async function(req, res){
    
 })
 
+router.route('/isLogin').post(checkAuth(), function(req, res){
+    let response = {
+        success: true
+    }
+    if(res.success){
+        res.status(200).json(response);
+    }
+    else{
+        res.json(response);
+    }
+   
+})
+
 router.route("/createAccount").post(async function(req, res){
     let userCreated = req.body;
 
