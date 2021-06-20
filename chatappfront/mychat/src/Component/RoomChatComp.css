@@ -1,7 +1,23 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 1rem;
+}
+
+.roomUsers{
+    margin-right: 1rem;
+    border: 1px solid black;
+    padding: 0 0.5rem;
+    height: 63vh;
+    width: 10vw;
+    
+}
+
 .chatBox{
     border: 1px solid black;
     width: 35vw;
-    margin: auto;
+   
 }
 
 .chat{
@@ -26,6 +42,12 @@
 
 .txt{
     width: 85%;
+}
+
+.leaveChat{
+    margin-bottom: 0.5rem;
+    text-align: right;
+    margin-right: 1.7rem;
 }
 
 .userMsg{

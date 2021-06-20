@@ -12,7 +12,6 @@ import reducer from '../src/Redux/reducer';
 
 const appStore = createStore(reducer);
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={appStore}>

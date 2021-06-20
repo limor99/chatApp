@@ -100,7 +100,7 @@ function RoomChatComp(props) {
         
       <div className='App'>
           hello {sessionStorage.username}, you are in room {props.match.params.roomName}
-
+        <div className='container'>
           <div className='roomUsers'>
             in room: 
             {
@@ -113,8 +113,10 @@ function RoomChatComp(props) {
             }
 
           </div>
-
+          
+          
           <div className='chatBox'>
+            <div className='leaveChat'><button onClick={leaveChat}>Leave Chat</button></div>
             <div className='chat'>
 
               {
@@ -138,11 +140,8 @@ function RoomChatComp(props) {
               <button onClick={sendMsg}>send</button>
             </div>
           </div>
-          
-          <br/>
-          <button onClick={leaveChat}>Leave Chat</button>
-
-        </div>
+        </div>  
+      </div>
     );
   }
   

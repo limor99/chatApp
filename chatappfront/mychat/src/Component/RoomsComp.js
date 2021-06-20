@@ -27,7 +27,7 @@ function RoomsComp(props) {
     }, [])
 
     return (
-      <div className='App'>
+      <div>
           <h3>Hello {sessionStorage.username}, Please choose Room for chat</h3>
 
           <select name="rooms" onChange={e => setChosenRoom(e.target.value)}>
