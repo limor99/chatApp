@@ -41,9 +41,16 @@ io.on('connection', socket =>{
 
     //Listen for chatMessage
     socket.on('chatMessage', msg =>{
-        //console.log(msg);
         const currentUser = getCurrentUser(socket.id);
-        io.to(currentUser.room).emit('message', formatMessage(currentUser.username, msg));
+        io.to(currentUser.room).emit('message', formatMessage(currentUser.username, msg, socket.id));
+    })
+
+    //Listen for readMsgs
+    socket.on('readMsgs', msg =>{
+        //const currentUser = getCurrentUser(socket.id);
+        //socket.broadcast.to(currentUser.room).emit('checkedAsRead', msg);
+
+        socket.broadcast.to(msg.socketId).emit('checkedAsRead', msg);
     })
 
     //Runs when clien disconnect

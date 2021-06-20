@@ -68,72 +68,6 @@ exports.login = async function(user){
 }
 
 
-
-
-/** get all user with their all data from all sources:
- * 1. user collection from db
- * 2. users.json file
- * 3. permission.json file
- */
-/*
-exports.getAllUsers = async function(){
-    let usersData = null;
-
-    try{
-        //1. read all users from user.json file
-        let users = await userFileDal.readUsersFromFile();
-        
-        //2. read all users's permissions from permissions.json
-        let usersPermissions = await permissionFileDal.readPermissions();
-        
-        //3. get all users from DB
-        let usersFromDB = await User.find({});
-        //4. data shaping
-        if(users != undefined && usersPermissions != undefined){
-            usersData = users.map(user =>{
-                let userPermissions = usersPermissions.filter(permission => permission.id === user.id);
-                let userFromDB = usersFromDB.filter(u => u.id === user.id);
-
-            return {
-                    id: user.id,
-                    firstName: user.firstName, 
-                    lastName: user.lastName,
-                    username : userFromDB[0].username,
-                    sessionTimeOut: user.sessionTimeOut,
-                    createdDate : user.createdDate,
-                    permissions: userPermissions[0].permissions
-                }
-                
-            })
-        }
-    }
-    catch(err){
-        console.log(`An Error occured ${err}`);
-    }
-    finally{
-        return usersData;
-    }
-}
-*/
-
-
-/** get user by id with all his data from files and db */
-/*
-exports.getUserById = async function(userId){
-    let users = null;
-    let user = null;
-    users = await this.getAllUsers();
-    if(users){
-        user = users.filter(user => user.id === userId)[0];
-    }
-    else{
-        console.log(`An error occured while try to read user: ${userId} from file`);
-    }
-
-    return user;
-}
-*/
-
 exports.addNewUser = async function(user){
     let isAdded = false;
     let createdUser = null;
@@ -141,9 +75,6 @@ exports.addNewUser = async function(user){
         // 1. add to DB
         let NewUser = new User(user);
         createdUser = await NewUser.save();
-        
-        
-        
     }
     catch(err){
         console.log(`An error occured while try to add new user: ${user.username} to DB and/or to json files: ${err}`);
@@ -157,14 +88,6 @@ exports.addNewUser = async function(user){
     }
 }
 
-/**
- * 
- * TODO: change this function
- */
-
-/** update the user collection. this function is call when user update his password in db for the first time
- * after the admin create the username 
- */
 exports.createAccount = async function(account){
     let success = false, msg = '';
     

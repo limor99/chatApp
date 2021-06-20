@@ -22,7 +22,6 @@ const checkAuth =  () =>{
                     resp.json(response);
                 }
                 else{
-                    console.log({userData});
                     const permissions = userData.permissions;
                     if(permissions.includes(permission)){
                         next();

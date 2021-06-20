@@ -22,7 +22,6 @@ router.route('/login').post(async function(req, res){
     let response = await usersBL.login(user);
 
     if(response.success){
-        console.log('login success:' +req.headers);
         res.status(200).json(response);
     }
     else{
