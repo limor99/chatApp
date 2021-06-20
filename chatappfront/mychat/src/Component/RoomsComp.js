@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useHistory, Link } from 'react-router-dom';
-
-import usersUtil from '../Utils/usersUtil';
-import socketUtil from '../Utils/socketUtil';
+import { useHistory } from 'react-router-dom';
 
 function RoomsComp(props) {
     const [rooms, setRooms] = useState('');

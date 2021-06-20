@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Login from '../src/Component/LoginComp';
 import CreateAccount from '../src/Component/CreateAccountComp';
 import Rooms from '../src/Component/RoomsComp';

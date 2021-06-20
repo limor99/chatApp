@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useHistory, Link } from 'react-router-dom';
 //import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,8 +11,6 @@ function LoginComp(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('');
-
-    const userFullName = localStorage.getItem('userFullName');
 
     const history = useHistory();
     //const dispatch = useDispatch();

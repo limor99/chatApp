@@ -1,18 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
-import socketIOClient, { Manager } from "socket.io-client";
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
-
-import usersUtil from '../Utils/usersUtil';
-import socketUtil from '../Utils/socketUtil';
+import socketIOClient from "socket.io-client";
+import { useHistory } from 'react-router-dom';
 
 import './RoomChatComp.css';
-
-import moment from 'moment';
-
-//import image from '../../public/blueDoubleCheck.PNG'
-
 
 const ENDPOINT = "http://localhost:5000";
 let socket;
@@ -39,6 +30,7 @@ function RoomChatComp(props) {
     }
    
     const sendMsg = () =>{
+      setText('');
       socket.emit('chatMessage', text);
     }
 
@@ -98,6 +90,12 @@ function RoomChatComp(props) {
       }
     }, []);
 
+    const AlwaysScrollToBottom = () => {
+      const elementRef = useRef();
+      useEffect(() => elementRef.current.scrollIntoView());
+      return <div ref={elementRef} />;
+    };
+
     return (
         
       <div className='App'>
@@ -117,22 +115,30 @@ function RoomChatComp(props) {
           </div>
 
           <div className='chatBox'>
+            <div className='chat'>
+
               {
-                  messages.length != 0 ?
+                  messages.length !== 0 ?
                   messages.map((msg, index) =>{
-                      return <div key={index} className='msg'>{msg.username} | {msg.text} | {msg.time} | 
+                      return <div key={index} className={msg.username ==='Admin' ? 'adminMsg' : msg.username === username ? 'userMsg' : 'otherMsg'}>
+                                <div>{msg.username} &nbsp; {msg.time} </div>
+                                <div className='msgText'>{msg.text}</div>
                                 {(msg.username === 'Admin' || msg.username !== username) ? '' : msg.read ? 
-                                  <img src='/blueDoubleCheck.PNG'/>
+                                  <img alt='read message' src='/blueDoubleCheck.PNG'/>
                                    : ''}
                             </div>
                   })
                   :
                   ''
               }
-
+              <AlwaysScrollToBottom />
+            </div>
+            <div className='sendTxt'>
+              <input  className='txt' type='text' onChange={e => setText(e.target.value)} value={text}></input>
+              <button onClick={sendMsg}>send</button>
+            </div>
           </div>
-          <input type='text' onChange={e => setText(e.target.value)} value={text}></input>
-          <button onClick={sendMsg}>send</button>
+          
           <br/>
           <button onClick={leaveChat}>Leave Chat</button>
 

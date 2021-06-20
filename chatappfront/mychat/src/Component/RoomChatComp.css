@@ -1,6 +1,61 @@
 .chatBox{
     border: 1px solid black;
+    width: 35vw;
+    margin: auto;
+}
+
+.chat{
+    border: 1px solid black;
     height: 50vh;
-    width: 50vw;
+    width: 30vw;
+    margin: 0.5rem auto;
+    overflow-y: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.sendTxt{
+    width: 30vw;
+    margin: 0 auto 0.5rem auto;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+.txt{
+    width: 85%;
+}
+
+.userMsg{
+    background-color: aqua;
+    margin: 0.1rem;
+    border-radius: 10px;
+    width: 70%;
+    align-self: flex-end;
+}
+
+.otherMsg{
+    background-color: aquamarine;
+    margin: 0.1rem;
+    border-radius: 10px;
+    width: 70%;
+    align-self: flex-start;
+
+}
+
+.adminMsg{
+    background-color: navajowhite;
+    margin: 0.1rem;
+    border-radius: 10px;
+    width: 70%;
+    align-self: center;
+
+}
+
+.msgText{
+    display: inline;
+    margin-right: 0.5rem;
 }
 
